@@ -1,3 +1,4 @@
+# -- coding: UTF-8 --
 import telepot
 import time
 import urllib.request
