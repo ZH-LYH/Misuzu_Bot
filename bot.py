@@ -25,6 +25,8 @@ def handle(msg) :
                             weather(cmd,chat_id)
                      elif cmd.startswith('/hitokoto'):
                             hitokoto(chat_id)
+                     elif cmd.startswith('/ip'):
+                            ip(cmd,chat_id)
                      else:
                             bot_error(chat_id)
 
@@ -71,6 +73,19 @@ def hitokoto(chat_id):
        hitokotoInfo = stdout.read().decode('utf-8')
        hitokotoJsonData = json.loads(hitokotoInfo)
        bot.sendMessage(chat_id,hitokotoJsonData['hitokoto']+'\n ── '+hitokotoJsonData['from'])
+
+'''def ip(cmd,chat_id):
+       ip = parse_cmd(cmd, '/ip')
+       if ip == '':
+              bot.sendMessage(chat_id,'输入ip小観鈴才能帮主人查询哦')
+       else:
+              ipUrl = 'http://ipinfo.io/'+urllib.parse.quote(ip)
+              #bot.sendMessage(chat_id,ipUrl)
+              stdout = urllib.request.urlopen(ipUrl)
+              ipInfo = stdout.read().decode('utf-8')
+              ipJsonData = json.loads(ipInfo)
+              bot.sendMessage(chat_id,ipJsonData)'''
+       
 
 # 错误信息
 def bot_error(chat_id):
